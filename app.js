@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
-
+const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -38,4 +38,4 @@ app.post('/items', async (req, res) => {
   res.status(201).json({ message: 'Stored new item.', item: newItem });
 });
 
-app.listen(8080);
+app.listen(PORT);
